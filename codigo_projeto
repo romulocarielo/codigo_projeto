@@ -1,6 +1,3 @@
-git remote add origin https://github.com/romulocarielo/codigo_projeto.git
- git branch -M main 
-git push -u origin main
 
 var nivel = 1;
 var escolhaFase = 0;
