@@ -1,4 +1,3 @@
-
 var nivel = 1;
 var escolhaFase = 0;
 
@@ -17,19 +16,83 @@ var yMaxBotao3 = yMinBotao3+ alturaBotao
 
 var imagemEducador;
 var imagemProgramador;
+var imagemBackground;
 
 var tela = 0;
 // tela 1: intruções
 // tela 2: creditos
 
+function acabouJogo(){
+   background(220);
+  background('blue');
+  textSize(32);
+  textFont('fantasy')
+  fill('white');
+  text("GAME OVER!",70,80);
+}
+
+function ganhouJogo(){
+   background(220);
+  background('blue');
+  textSize(32);
+  textFont('fantasy')
+  fill('white');
+  text("PARABÉNS,VOCÊ VENCEU!",70,150);
+  image(imagemGanhador,140, 200, 280,190)
+}
+
+function mouseClicked(){
+  if(tela == 3 && nivel == 1){
+    if(escolhaFase == 3 || escolhaFase == 2 || escolhaFase == 4){
+      tela = 4;
+    }
+    if(escolhaFase == 1){
+      nivel = 2;
+    }
+  }
+  else{
+    if(tela == 3 && nivel == 2){
+      if(escolhaFase == 3 || escolhaFase == 2 || escolhaFase == 4){
+      tela = 4;
+    }
+    if(escolhaFase == 1){
+      nivel = 3;
+      }
+    }
+  }
+  if(tela == 3 && nivel == 3){
+    if(escolhaFase == 3 || escolhaFase == 2 || escolhaFase == 4){
+      tela = 4;
+    }
+    if(escolhaFase == 1){
+      nivel = 4;
+    }
+  }
+  else{
+    if(tela == 3 && nivel ==4){
+    if(escolhaFase == 3 || escolhaFase == 2 || escolhaFase == 4){
+      tela = 4;
+    }
+    if(escolhaFase == 1){
+     tela = 5;
+    }
+  }
+  }
+  
+ 
+}
+
+
+
 function opcaoBotao(xMin,xMax, yMin, yMax, largura,altura,opcao){
  // Botão 2
       if(mouseX > xMin && mouseX < xMax && mouseY > yMin && mouseY < yMax) {
       fill(250);
-      if (mouseIsPressed){
+      escolhaFase = opcao;
+      /*if (mouseIsPressed){
         escolhaFase = opcao;
         console.log("Escolha: ", escolhaFase)
-      }
+      }*/
     }
     else {
       noFill();    
@@ -38,29 +101,107 @@ function opcaoBotao(xMin,xMax, yMin, yMax, largura,altura,opcao){
   textSize(26);
   fill(0);
   
+}
+
+function fase4(){
+   background(220);
+  background('black');
+  textSize(32);
+  textFont('fantasy')
+  fill('white');
+  text("RESOLVA ESSA DIVISÃO !",100,80);
+  image(imagemFase4,140, 100, 200,130);
+  
+  escolhaFase = 0
+  opcaoBotao(50, 200, 260, 300 , 50, 50,1)
+  textSize(44)
+  fill('yellow')
+  text('2' , 60,305);
+  
+  opcaoBotao(140, 350, 300, 300 , 50, 50,2)
+  textSize(44)
+  fill('yellow')
+  text('4' , 155,340);
+  
+  opcaoBotao(230, 350, 350, 300 , 50, 50,3)
+  textSize(44)
+  fill('yellow')
+  text('8' , 240,390);
+  
+  opcaoBotao(320, 350, 380, 300 , 50, 50,4)
+  textSize(44)
+  fill('yellow')
+  text('6' , 335,420);
   
 }
 
 
 
+function fase2(){
+   background(220);
+  background('red');
+  textSize(32);
+  textFont('fantasy')
+  fill('white');
+  text("QUAL RESULTADO DESSA SUBTRAÇÃO?",20,80);
+  image(imagemFase2,140, 100, 200,130);
+  
+  escolhaFase = 0
+  opcaoBotao(50, 200, 260, 300 , 50, 50,1)
+  textSize(44)
+  fill('yellow')
+  text('6' , 60,305);
+  
+  opcaoBotao(140, 350, 300, 300 , 50, 50,2)
+  textSize(44)
+  fill('yellow')
+  text('4' , 155,340);
+  
+  opcaoBotao(230, 350, 350, 300 , 50, 50,3)
+  textSize(44)
+  fill('yellow')
+  text('5' , 240,390);
+  
+  opcaoBotao(320, 350, 380, 300 , 50, 50,4)
+  textSize(44)
+  fill('yellow')
+  text('7' , 335,420);
+  
+}
 
 function fase1(){
    background(220);
-  background('yellow');
+  background('blue');
   textSize(32);
   textFont('fantasy')
-  fill(10);
-  fill(15);
+  fill('white');
   text("QUAL RESULTADO DESSA SOMA?",70,80);
+  image(imagemFase1,140, 100, 200,130);
   
   
+  escolhaFase = 0;
   
-  opcaoBotao(100, 200, 250, 300 , 70, 50,1)
- 
+  opcaoBotao(50, 200, 260, 300 , 50, 50,1)
+  textSize(44)
+  fill('yellow')
+  text('6' , 60,305);
   
-  opcaoBotao(250, 200, 250, 300 , 70, 50,2)
+  opcaoBotao(140, 350, 300, 300 , 50, 50,2)
+  textSize(44)
+  fill('yellow')
+  text('10' , 145,340);
   
+  opcaoBotao(230, 350, 350, 300 , 50, 50,3)
+  textSize(44)
+  fill('yellow')
+  text('8' , 240,390);
   
+  opcaoBotao(320, 350, 380, 300 , 50, 50,4)
+  textSize(44)
+  fill('yellow')
+  text('12' , 325,420);
+  
+   
 
 }
 
@@ -91,12 +232,12 @@ function telaInstrucoes(){
   fill(10);
   text("INSTRUÇÕES", 150, 100);
   textSize(25);
-  text("• O JOGO CONTÉM 4 NÍVEIS; "+ "\n• PARA JOGAR SERÁ NECESSÁRIO APENAS O USO DO MOUSE; "+"\n• O OBJETIVO DO JOGO É RESOLVER DETERMINADO PROBLEMA MATEMÁTICO. ", 30, 170, 460)
+  text("• O JOGO CONTÉM 3 NÍVEIS; "+ "\n• PARA JOGAR SERÁ NECESSÁRIO APENAS O USO DO MOUSE; "+"\n• O OBJETIVO DO JOGO É RESOLVER DETERMINADO PROBLEMA MATEMÁTICO. ", 30, 170, 460)
 }
 
 function telaCreditos(){
   background(220);
-  background('yellow');
+  background('white')
   textSize(36);
   fill(10)
   text("CRÉDITOS", 160 , 70);
@@ -118,6 +259,13 @@ function telaCreditos(){
 function preload(){
   imagemEducador = loadImage("FOTO1.jpeg")
   imagemProgramador = loadImage("romulo camisa amarela.jpeg")
+  imagemBackground = loadImage("matematica.jpg")
+  imagemFase1 = loadImage("soma.JPG")
+  imagemTitulo = loadImage("titulo1.jpg")
+  imagemFase2 = loadImage("subtracao1.JPG")
+  imagemFase3 = loadImage("multiplicacao.JPG")
+  imagemFase4 = loadImage("divisao.JPG")
+  imagemGanhador = loadImage("podio.jpg")
 }
 
 function setup() {
@@ -126,12 +274,10 @@ function setup() {
 
 function draw() {
   if( tela == 0){
-  background(220);
-  background('yellow');
-  textSize(32);
-   textFont('fantasy')
+  background(imagemBackground);
+  textSize(40);
+  textFont('fantasy')
   fill(10);
-  text("PENSANDO RÁPIDO", 130, 90);
     
     textFont('fantasy');
      
@@ -140,6 +286,8 @@ function draw() {
      menuBotao("Instruções",yMinBotao1,yMaxBotao1,1);
         
     menuBotao("Créditos", yMinBotao2,yMaxBotao2,2);
+    
+     image(imagemTitulo,120,30,250,80);
  
 }            
   if( tela == 1 ){
@@ -152,5 +300,22 @@ function draw() {
      if( nivel == 1){
        fase1()
      }
+    if(nivel == 2 ){
+      fase2();
+    }
+    if(nivel == 3){
+      fase3();
+    }
+    if(nivel == 4){
+      fase4();
+    }
   }
-} 
+  if(tela == 4){
+    acabouJogo()
+  }
+  else{
+    if(tela == 5){
+      ganhouJogo()
+    }
+  }
+}
